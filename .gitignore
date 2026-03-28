@@ -1,6 +1,8 @@
 **/__pycache__/
 *.pyc
+venv/
 scripts/
+.claude/
 CLAUDE.md
 AGENTS.md
 SCRATCHPAD.md
