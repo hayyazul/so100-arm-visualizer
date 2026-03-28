@@ -28,18 +28,18 @@ from ik_solver import SO100IKSolver
 class TestComputeWorkspaceRadius(unittest.TestCase):
     def test_radius_in_expected_range(self) -> None:
         """Radius from the real URDF should be between 0.25 and 0.50 m."""
-        radius: float = compute_workspace_radius("so100_kinematics.urdf")
+        radius: float = compute_workspace_radius("models/so100_kinematics.urdf")
         self.assertGreater(radius, 0.25)
         self.assertLess(radius, 0.50)
 
     def test_radius_is_positive(self) -> None:
-        radius: float = compute_workspace_radius("so100_kinematics.urdf")
+        radius: float = compute_workspace_radius("models/so100_kinematics.urdf")
         self.assertGreater(radius, 0.0)
 
 
 class TestValidateIKSolution(unittest.TestCase):
     def setUp(self) -> None:
-        self.solver: SO100IKSolver = SO100IKSolver(urdf_path="so100_kinematics.urdf")
+        self.solver: SO100IKSolver = SO100IKSolver(urdf_path="models/so100_kinematics.urdf")
 
     def test_reachable_position(self) -> None:
         """A known reachable position should validate as True."""
@@ -92,7 +92,7 @@ class TestIKWarmStart(unittest.TestCase):
     """Verify the warm-start parameter in calculate_ik works correctly."""
 
     def setUp(self) -> None:
-        self.solver: SO100IKSolver = SO100IKSolver(urdf_path="so100_kinematics.urdf")
+        self.solver: SO100IKSolver = SO100IKSolver(urdf_path="models/so100_kinematics.urdf")
 
     def test_warm_start_does_not_crash(self) -> None:
         """Providing an initial guess should not raise."""

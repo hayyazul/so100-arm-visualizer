@@ -379,11 +379,11 @@ def parse_args() -> argparse.Namespace:
         description="SO-100 Arm Interactive Visualizer"
     )
     parser.add_argument(
-        "--urdf", type=str, default="so100.urdf",
+        "--urdf", type=str, default="models/so100.urdf",
         help="Path to the original URDF with meshes",
     )
     parser.add_argument(
-        "--ik-urdf", type=str, default="so100_kinematics.urdf",
+        "--ik-urdf", type=str, default="models/so100_kinematics.urdf",
         help="Path to the kinematics-only URDF for the solver",
     )
     parser.add_argument(

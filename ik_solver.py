@@ -76,7 +76,7 @@ class SO100IKSolver:
 if __name__ == "__main__":
     print("Testing SO100IKSolver Initialization...")
     
-    urdf_file: str = "so100_kinematics.urdf"
+    urdf_file: str = "models/so100_kinematics.urdf"
     
     try:
         solver: SO100IKSolver = SO100IKSolver(urdf_path=urdf_file)

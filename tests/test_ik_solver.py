@@ -6,7 +6,7 @@ from ik_solver import SO100IKSolver
 class TestSO100IKSolver(unittest.TestCase):
     def setUp(self) -> None:
         """Sets up the solver instance."""
-        urdf_file: str = "so100_kinematics.urdf"
+        urdf_file: str = "models/so100_kinematics.urdf"
         try:
             self.solver: SO100IKSolver = SO100IKSolver(urdf_path=urdf_file)
         except Exception as e:
