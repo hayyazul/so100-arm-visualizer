@@ -29,21 +29,28 @@ class SO100IKSolver:
         )
 
     def calculate_ik(
-        self, 
-        target_position: List[float]
+        self,
+        target_position: List[float],
+        initial_joint_pos_rad: Optional[List[float]] = None
     ) -> List[float]:
         """
         Calculates the inverse kinematics for a given target end-effector position.
-        
+
         Args:
             target_position (List[float]): The desired [x, y, z] target position in meters in the base frame.
-        
+            initial_joint_pos_rad (Optional[List[float]]): Starting joint angles in radians for the solver.
+                If None, defaults to all zeros. Providing a warm-start (e.g. current arm config) improves
+                convergence for interactive use.
+
         Returns:
             List[float]: A list of joint angles that achieves the target position.
         """
-        # We start from a neutral position (all zeros) for the initial guess
         num_joints: int = len(self.kinematics.joint_names)
-        current_joint_pos: np.ndarray = np.zeros(num_joints, dtype=np.float64)
+        if initial_joint_pos_rad is not None:
+            # lerobot expects degrees internally
+            current_joint_pos: np.ndarray = np.rad2deg(np.array(initial_joint_pos_rad, dtype=np.float64))
+        else:
+            current_joint_pos: np.ndarray = np.zeros(num_joints, dtype=np.float64)
         
         # The lerobot inverse_kinematics expects a 4x4 homogenous matrix for desired pose
         desired_ee_pose: np.ndarray = np.eye(4, dtype=np.float64)

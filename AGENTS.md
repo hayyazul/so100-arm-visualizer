@@ -43,7 +43,6 @@
 
 # Phase 2:
     - A simple visualizer of the given system. It need not be fancy or even interactable at this stage.
-        - Maybe you can use Manim.
 
 # Phase 3:
     - An interactable version of the visualizer; the user should be able to control the end-effector position and orientation and see the arm move in real-time in the visualizer.
